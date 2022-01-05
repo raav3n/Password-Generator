@@ -4,22 +4,28 @@
     <meta charset="utf-8">
     <title>Passwords</title>
     <link href="main.css" type="text/css" rel="stylesheet"/>
-    <script src="main.js"></script>
   </head>
   <body>
     <div class="header">
-
-      <h1>Passwords</h1>
-
+      <h1>Password Generator</h1>
     </div>
+
     <div class="overlay">
       <div class="overlay__inner">
         <div class="overlay__wrapper">
           <div class="overlay__content">
-            <input id="pass_in" disabled="disabled" placeholder="password"/>
+
+            <img src="images/copied.png" id="copied"/>
+            <img src="images/copy.png" id="copy"/>
+            <input id="pass_in" placeholder="password" readonly>
+            <button id="btn">
+            <p id="btnText">Refresh</p>
+
           </div>
         </div>
       </div>
     </div>
-  </body
+
+    <script type="text/javascript" src="main.js"></script>
+  </body>
 </html>
