@@ -18,6 +18,16 @@
             <img src="images/copied.png" id="copied"/>
             <img src="images/copy.png" id="copy"/>
             <input id="pass_in" placeholder="password" readonly>
+
+            <div class="overlay__chars_scroller">
+              <p class="labels">Character Length:</p> <input type="range" min="5" max="25" value="10" id="charRange"/><p id="charRangeNum"></p>
+            </div>
+
+            <div class="overlay__checkbox">
+              <p class="labels">Symbols:</p> <input type="checkbox" id="checkSymbols"/>
+              <p class="labels">Numbers:</p> <input type="checkbox" id="checkNumbers"/>
+            </div>
+
             <button id="btn">
             <p id="btnText">Refresh</p>
 

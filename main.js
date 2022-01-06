@@ -5,6 +5,7 @@ function sleep (time) {
 window.onload = function()
 {
   document.getElementById("pass_in").value = "FCDnioas&Sd";
+  document.getElementById("charRangeNum").innerHTML = document.getElementById("charRange").value;
 }
 
 document.getElementById("pass_in").addEventListener("click", function()
@@ -29,3 +30,20 @@ document.getElementById("pass_in").addEventListener("mousedown", function(event)
 {
   event.preventDefault();
 });
+
+//Event Listerns for Option Change
+document.getElementById("charRange").addEventListener("input", function()
+{
+  document.getElementById("charRangeNum").innerHTML = document.getElementById("charRange").value;
+  genPass();
+});
+
+do
+function genPass ()
+{
+  //min length of 10 charactes
+    //least 3 numbers
+    //least 3 symbols
+    //lower and upper case
+  //use crypto api instead of math.random
+}
