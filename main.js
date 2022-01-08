@@ -37,8 +37,10 @@ document.getElementById("charRange").addEventListener("input", function()
   document.getElementById("charRangeNum").innerHTML = document.getElementById("charRange").value;
   genPass();
 });
+document.getElementById("checkSymbols").addEventListener("change", genPass);
+document.getElementById("checkNumbers").addEventListener("change", genPass);
 
-do
+
 function genPass ()
 {
   //min length of 10 charactes
@@ -46,4 +48,19 @@ function genPass ()
     //least 3 symbols
     //lower and upper case
   //use crypto api instead of math.random
+  const regex = /[a-zA-Z0-9\.\*\+\?\$\^\/\\]/;
+  const length = document.getElementById("charRangeNum");
+  const symbol = document.getElementById("checkSymbols").checked;
+  const nums = document.getElementById("checkNumbers").checked;
+
+  pass = []
+
+  while(pass.length < 10)
+  {
+    let buffer = new Uint8Array(1);
+    crypto.getRandomValues(buffer);
+    char = String.fromCharCode(buffer);
+    if(regex.test(char) == true) pass.push(char);
+  }
+  console.log(pass.join(""));
 }
