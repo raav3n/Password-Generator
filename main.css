@@ -41,7 +41,7 @@ body {
   color: #222;
   text-align: center;
   top: 50%;
-  padding-top: 15%;
+  /* padding-top: 15%; */ might need to fix
 }
 
 .overlay:after {
@@ -118,7 +118,7 @@ body {
 #copy
 {
   position: absolute;
-  bottom: 460px;
+  bottom: 435px;
   right: 75px;
   width: 3%;
   /* opacity: 0.8; */
@@ -126,7 +126,7 @@ body {
 #copied
 {
   position: absolute;
-  bottom: 460px;
+  bottom: 435px;
   right: 75px;
   width: 3%;
   opacity: 0.8;
@@ -274,6 +274,7 @@ input[type=range]:focus::-ms-fill-upper {
  input[type=checkbox]
  {
    appearance: none;
+   -webkit-appearance: none;
    background-color: #fff;
    width: 30px;
    height: 30px;

@@ -4,8 +4,11 @@ function sleep (time) {
 
 window.onload = function()
 {
-  document.getElementById("pass_in").value = "FCDnioas&Sd";
   document.getElementById("charRangeNum").innerHTML = document.getElementById("charRange").value;
+  document.getElementById("checkSymbols").checked = true;
+  document.getElementById("checkNumbers").checked = true;
+
+  genPass();
 }
 
 document.getElementById("pass_in").addEventListener("click", function()
@@ -41,26 +44,48 @@ document.getElementById("checkSymbols").addEventListener("change", genPass);
 document.getElementById("checkNumbers").addEventListener("change", genPass);
 
 
-function genPass ()
+function genPass()
 {
   //min length of 10 charactes
     //least 3 numbers
     //least 3 symbols
     //lower and upper case
   //use crypto api instead of math.random
+
+  //all characters
   const regex = /[a-zA-Z0-9\.\*\+\?\$\^\/\\]/;
-  const length = document.getElementById("charRangeNum");
+
+  //letters and Symbols
+  const regex_ls = /[a-zA-Z\.\*\+\?\$\^\/\\]/;
+
+  //letters and Numbers
+  const regex_ln = /[a-zA-Z0-9]/;
+
+  //letters
+  const regex_l = /[a-zA-Z]/;
+
+  const length = document.getElementById("charRangeNum").innerHTML;
   const symbol = document.getElementById("checkSymbols").checked;
   const nums = document.getElementById("checkNumbers").checked;
 
   pass = []
 
-  while(pass.length < 10)
+  console.log(length);
+
+  while(pass.length < length)
   {
+    //generate a random character
     let buffer = new Uint8Array(1);
     crypto.getRandomValues(buffer);
     char = String.fromCharCode(buffer);
-    if(regex.test(char) == true) pass.push(char);
+
+    if(symbol == true & nums == true) if(regex.test(char) == true) pass.push(char);
+    if(symbol == false & nums == true) if(regex_ln.test(char) == true) pass.push(char);
+    if(symbol == true & nums == false) if(regex_ls.test(char) == true) pass.push(char);
+    if(symbol == false & nums == false) if(regex_l.test(char) == true) pass.push(char);
   }
-  console.log(pass.join(""));
+
+  document.getElementById("pass_in").value = pass.join("");
 }
+
+document.getElementById("btnText").addEventListener("click", genPass)
